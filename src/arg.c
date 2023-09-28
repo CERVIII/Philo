@@ -6,7 +6,7 @@
 /*   By: pcervill <pcervill@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 12:46:45 by pcervill          #+#    #+#             */
-/*   Updated: 2023/09/27 15:10:02 by pcervill         ###   ########.fr       */
+/*   Updated: 2023/09/28 14:31:58 by pcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,10 @@ void	all_num(char *argv[])
 	while (argv[i])
 	{
 		j = 0;
-		printf("%s\n", argv[i]);
 		while (argv[i][j])
 		{
-			if (argv[i][j] < '0' && argv[i][j] > '9')
+			if (argv[i][j] < '0' || argv[i][j] > '9')
 			{
-				printf("%c\n", argv[i][j]);
 				printf("%sError\nOnly numbers in arguments\n%s", RED, NORMAL);
 				exit(EXIT_FAILURE);
 			}

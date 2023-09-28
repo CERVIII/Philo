@@ -6,14 +6,16 @@
 /*   By: pcervill <pcervill@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 12:37:09 by pcervill          #+#    #+#             */
-/*   Updated: 2023/09/27 13:56:21 by pcervill         ###   ########.fr       */
+/*   Updated: 2023/09/28 13:39:45 by pcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
 
-# include "./libft/include/libft.h"
+# include <stdio.h>
+# include <unistd.h>
+# include <stdlib.h>
 
 /* 		COLORS		 */
 # define NORMAL  "\x1B[0m"
