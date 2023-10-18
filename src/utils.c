@@ -6,15 +6,36 @@
 /*   By: pcervill <pcervill@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 12:22:43 by pcervill          #+#    #+#             */
-/*   Updated: 2023/10/17 15:43:47 by pcervill         ###   ########.fr       */
+/*   Updated: 2023/10/18 12:45:38 by pcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
+void	clear_data(t_data *data)
+{
+	if (data->tid)
+		free(data->tid);
+	if (data->forks)
+		free(data->forks);
+	if (data->philos)
+		free(data->philos);
+	return ;
+}
+
 void	ft_exit(t_data *data)
 {
-	free(data);
+	int	i;
+
+	i = 0;
+	while (i++ < data->philo_num)
+	{
+		pthread_mutex_destroy(&data->forks[i]);
+		pthread_mutex_destroy(&data->philos[i].lock);
+	}
+	pthread_mutex_destroy(&data->write);
+	pthread_mutex_destroy(&data->lock);
+	clear_data(data);
 	return ;
 }
 

@@ -6,7 +6,7 @@
 /*   By: pcervill <pcervill@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 12:37:09 by pcervill          #+#    #+#             */
-/*   Updated: 2023/10/17 14:49:52 by pcervill         ###   ########.fr       */
+/*   Updated: 2023/10/18 12:50:30 by pcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,17 +82,21 @@ typedef struct s_data
 }	t_data;
 
 /* 		ARG.C		 */
-int		correct_value(int argc, char *argv[]);
 int		all_num(char *argv[]);
 int		check_arg(int argc, char *argv[]);
 /* 					 */
 
 /* 		UTILS.C		 */
+void	clear_data(t_data *data);
 void	ft_exit(t_data *data);
 int		error(char *error, t_data *data);
 int		ft_atoi(const char *str);
 
 /* 		INIT.C		 */
+void	init_philos(t_data *data);
+int		init_forks(t_data *data);
+int		init_alloc(t_data *data);
+int		init_data(t_data *data, char **argv, int argc);
 int		init(t_data *data, char **argv, int argc);
 
 #endif
