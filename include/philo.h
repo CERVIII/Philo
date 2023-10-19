@@ -6,7 +6,7 @@
 /*   By: pcervill <pcervill@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 12:37:09 by pcervill          #+#    #+#             */
-/*   Updated: 2023/10/18 12:50:30 by pcervill         ###   ########.fr       */
+/*   Updated: 2023/10/19 11:18:05 by pcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@
 /* 		time_err	 */
 # define TIME_ERR "UNABLE TO RETRIVE UTC"
 /* 		philo_msg	 */
-# define TAKE_FORKS "has taken a fork"
-# define THINKING "is thinking"
-# define SLEEPING "is sleeping"
-# define EATING "is eating"
-# define DIED "died"
+# define TAKE_FORKS "has taken a fork 🍽"
+# define THINKING "is thinking 🤔"
+# define SLEEPING "is sleeping 😴"
+# define EATING "is eating 🥘"
+# define DIED "died 💀"
 
 /* 		COLORS		 */
 # define NORMAL  "\x1B[0m"

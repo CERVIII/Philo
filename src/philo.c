@@ -6,7 +6,7 @@
 /*   By: pcervill <pcervill@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 12:44:56 by pcervill          #+#    #+#             */
-/*   Updated: 2023/10/18 13:10:40 by pcervill         ###   ########.fr       */
+/*   Updated: 2023/10/19 12:59:01 by pcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,6 @@
 {
 	system("leaks -q philo");
 } */ //atexit(leaks);
-
-/* void	*routine(t_data *data, int argc)
-{
-	int	i;
-
-	i = 0;
-	while (i++ < argc)
-	{
-		pthread_mutex_lock(&data->lock);
-		data->philo_num++;
-		printf("NUM PHILO: %d\n", data->philo_num);
-		pthread_mutex_unlock(&data->lock);
-	}
-	return (NULL);
-} */
 
 int	main(int argc, char *argv[])
 {

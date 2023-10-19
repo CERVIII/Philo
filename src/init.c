@@ -6,7 +6,7 @@
 /*   By: pcervill <pcervill@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:37:49 by pcervill          #+#    #+#             */
-/*   Updated: 2023/10/18 13:08:58 by pcervill         ###   ########.fr       */
+/*   Updated: 2023/10/19 10:43:14 by pcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,6 @@ void	init_philos(t_data *data)
 		pthread_mutex_init(&data->philos[i].lock, NULL);
 		i++;
 	}
-	/* i = 0;
-	while (i < data->philo_num)
-	{
-		printf("%sPHILO: %d\n%sId: %d\nTime to die: %llu\nEat cont: %d\nEating: %d\nStatus: %d\n", GREEN, i, NORMAL, data->philos[i].id, data->philos[i].time_to_die, data->philos[i].eat_cont, data->philos[i].eating, data->philos[i].status);
-		i++;
-	} */
 	return ;
 }
 
