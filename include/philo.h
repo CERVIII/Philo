@@ -6,7 +6,7 @@
 /*   By: pcervill <pcervill@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 12:37:09 by pcervill          #+#    #+#             */
-/*   Updated: 2023/10/19 11:18:05 by pcervill         ###   ########.fr       */
+/*   Updated: 2023/10/23 12:48:26 by pcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <pthread.h>
+# include <sys/time.h>
 
 /* 		alloc_err	 */
 # define ALLOC_ERR_1 "ERROR WHILE ALLOCATING THREADS IDs"
@@ -58,7 +59,7 @@ typedef struct s_philo
 	int				eat_cont;
 	int				status;
 	int				eating;
-	uint64_t		time_to_die;
+	size_t			time_to_die;
 	pthread_mutex_t	lock;
 	pthread_mutex_t	*r_fork;
 	pthread_mutex_t	*l_fork;
@@ -72,10 +73,10 @@ typedef struct s_data
 	int				dead;
 	int				finished;
 	t_philo			*philos;
-	u_int64_t		death_time;
-	u_int64_t		eat_time;
-	u_int64_t		sleep_time;
-	u_int64_t		start_time;
+	size_t			death_time;
+	size_t			eat_time;
+	size_t			sleep_time;
+	size_t			start_time;
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	lock;
 	pthread_mutex_t	write;
@@ -84,13 +85,6 @@ typedef struct s_data
 /* 		ARG.C		 */
 int		all_num(char *argv[]);
 int		check_arg(int argc, char *argv[]);
-/* 					 */
-
-/* 		UTILS.C		 */
-void	clear_data(t_data *data);
-void	ft_exit(t_data *data);
-int		error(char *error, t_data *data);
-int		ft_atoi(const char *str);
 
 /* 		INIT.C		 */
 void	init_philos(t_data *data);
@@ -99,4 +93,13 @@ int		init_alloc(t_data *data);
 int		init_data(t_data *data, char **argv, int argc);
 int		init(t_data *data, char **argv, int argc);
 
+/* 		UTILS.C		 */
+void	clear_data(t_data *data);
+void	ft_exit(t_data *data);
+int		error(char *error, t_data *data);
+int		ft_atoi(const char *str);
+
+/* 		UTILS2.C	 */
+size_t	get_time(void);
+int		ft_usleep(size_t time);
 #endif

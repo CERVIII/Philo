@@ -6,7 +6,7 @@
 /*   By: pcervill <pcervill@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 12:44:56 by pcervill          #+#    #+#             */
-/*   Updated: 2023/10/19 12:59:01 by pcervill         ###   ########.fr       */
+/*   Updated: 2023/10/23 13:07:45 by pcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,28 @@
 	system("leaks -q philo");
 } */ //atexit(leaks);
 
+/* int	one_philo(t_data *data)
+{
+	data->start_time = get_time();
+	if (pthread_create(&data->tid[0], NULL, &routine, &data->philos[0]))
+		return (error(TH_ERR, data));
+	pthread_detach(data->tid[0]);
+	while (data->dead == 0)
+		ft_usleep(0);
+	ft_exit(data);
+	return (0);
+} */
+
 int	main(int argc, char *argv[])
 {
 	t_data	data;
-	int		i;
 
 	if (check_arg((argc - 1), argv))
 		return (1);
 	if (init(&data, argv, argc))
 		return (1);
-	i = 0;
-	while (i < data.philo_num)
-	{
-		printf("%sPHILO: %d\n%sId: %d\nTime to die: %llu\nEat cont: %d\nEating: %d\nStatus: %d\n", GREEN, i, NORMAL, data.philos[i].id, data.philos[i].time_to_die, data.philos[i].eat_cont, data.philos[i].eating, data.philos[i].status);
-		i++;
-	}
+	if (data.philo_num == 1)
+		return (one_philo(&data));
 	ft_exit(&data);
 	return (0);
 }

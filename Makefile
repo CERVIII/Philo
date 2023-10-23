@@ -6,7 +6,7 @@
 #    By: pcervill <pcervill@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/27 12:42:17 by pcervill          #+#    #+#              #
-#    Updated: 2023/10/19 13:02:17 by pcervill         ###   ########.fr        #
+#    Updated: 2023/10/23 12:25:37 by pcervill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CFLAGS = -Wall -Werror -Wextra -g -fsanitize=thread -g3
 
 SRC_DIR = ./src
 
-SRCS = philo.c arg.c utils.c init.c
+SRCS = philo.c arg.c init.c utils.c utils2.c
 
 OBJS = $(addprefix $(SRC_DIR)/, ${SRCS:.c=.o})
 
