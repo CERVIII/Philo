@@ -6,45 +6,53 @@
 /*   By: pcervill <pcervill@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 12:22:43 by pcervill          #+#    #+#             */
-/*   Updated: 2023/10/18 12:45:38 by pcervill         ###   ########.fr       */
+/*   Updated: 2024/07/16 19:42:20 by pcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-void	clear_data(t_data *data)
-{
-	if (data->tid)
-		free(data->tid);
-	if (data->forks)
-		free(data->forks);
-	if (data->philos)
-		free(data->philos);
-	return ;
-}
-
-void	ft_exit(t_data *data)
+void	destroy_all(t_data *data, pthread_mutex_t *forks)
 {
 	int	i;
 
 	i = 0;
-	while (i++ < data->philo_num)
+	pthread_mutex_destroy(&data->write_lock);
+	pthread_mutex_destroy(&data->meal_lock);
+	pthread_mutex_destroy(&data->dead_lock);
+	while (i < data->philos[0].num_of_philos)
 	{
-		pthread_mutex_destroy(&data->forks[i]);
-		pthread_mutex_destroy(&data->philos[i].lock);
+		pthread_mutex_destroy(&forks[i]);
+		i++;
 	}
-	pthread_mutex_destroy(&data->write);
-	pthread_mutex_destroy(&data->lock);
-	clear_data(data);
-	return ;
 }
 
-int	error(char *error, t_data *data)
+int	error(char *error, t_data *data, pthread_mutex_t *forks)
 {
-	printf("%s%s\n%s", RED, error, NORMAL);
+	if (error)
+		printf("%s%s\n%s", RED, error, NORMAL);
 	if (data)
-		ft_exit(data);
+		destroy_all(data, forks);
 	return (1);
+}
+
+size_t	get_current_time(void)
+{
+	struct timeval	time;
+
+	if (gettimeofday(&time, NULL) == -1)
+		write(2, "gettimeofday() error\n", 22);
+	return (time.tv_sec * 1000 + time.tv_usec / 1000);
+}
+
+int	ft_usleep(size_t time)
+{
+	size_t	start;
+
+	start = get_current_time();
+	while ((get_current_time() - start) < time)
+		usleep(time / 10);
+	return (0);
 }
 
 static int	snumber(unsigned long int number, int sign)

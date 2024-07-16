@@ -6,7 +6,7 @@
 /*   By: pcervill <pcervill@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 12:37:09 by pcervill          #+#    #+#             */
-/*   Updated: 2024/07/16 14:49:08 by pcervill         ###   ########.fr       */
+/*   Updated: 2024/07/16 22:25:53 by pcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,40 +83,6 @@ typedef struct s_data
 	t_philo			*philos;
 }					t_data;
 
-
-
-
-/* typedef struct s_philo
-{
-	struct s_data	*data;
-	pthread_t		t1;
-	int				id;
-	int				eat_cont;
-	int				status;
-	int				eating;
-	size_t			time_to_die;
-	pthread_mutex_t	lock;
-	pthread_mutex_t	*r_fork;
-	pthread_mutex_t	*l_fork;
-}	t_philo;
-
-typedef struct s_data
-{
-	pthread_t		*tid;
-	int				philo_num;
-	int				meals_nb;
-	int				dead;
-	int				finished;
-	t_philo			*philos;
-	size_t			death_time;
-	size_t			eat_time;
-	size_t			sleep_time;
-	size_t			start_time;
-	pthread_mutex_t	*forks;
-	pthread_mutex_t	lock;
-	pthread_mutex_t	write;
-}	t_data; */
-
 /* 		ARG.C		 */
 int		all_num(char *argv[]);
 int		check_arg(int argc, char *argv[]);
@@ -124,17 +90,32 @@ int		check_arg(int argc, char *argv[]);
 /* 		INIT.C		 */
 void	init_input(t_philo *philo, char **argv);
 void	init_philos(t_philo *philos, t_data *data, pthread_mutex_t *forks,
-		char **argv);
+			char **argv);
 void	init_forks(pthread_mutex_t *forks, int num_philo);
 void	init_data(t_data *data, t_philo *philos);
 
-/* 		UTILS.C		 */
-void	clear_data(t_data *data);
-void	ft_exit(t_data *data);
-int		error(char *error, t_data *data);
-int		ft_atoi(const char *str);
+/*THREADS.C*/
+int		dead_loop(t_philo *philo);
+void	*philo_routine(void *pointer);
+int		thread_create(t_data *data, pthread_mutex_t *forks);
 
-/* 		UTILS2.C	 */
+/* ACTIONS.C */
+void	print_msg(char *str, t_philo *philo, int id);
+void	ft_think(t_philo *philo);
+void	ft_sleep(t_philo *philo);
+void	ft_eat(t_philo *philo);
+
+/* MONITOR:C */
+int		philo_dead(t_philo *philo, size_t time_to_die);
+int		check_if_dead(t_philo *philos);
+int		check_if_all_ate(t_philo *philos);
+void	*monitor(void *pointer);
+
+/* 		UTILS.C		 */
+void	destroy_all(t_data *data, pthread_mutex_t *forks);
+int		error(char *error, t_data *data, pthread_mutex_t *forks);
 size_t	get_current_time(void);
 int		ft_usleep(size_t time);
+int		ft_atoi(const char *str);
+
 #endif

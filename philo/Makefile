@@ -6,17 +6,17 @@
 #    By: pcervill <pcervill@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/27 12:42:17 by pcervill          #+#    #+#              #
-#    Updated: 2024/07/16 14:07:42 by pcervill         ###   ########.fr        #
+#    Updated: 2024/07/16 22:16:27 by pcervill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
 
-CFLAGS = -Wall -Werror -Wextra -g -fsanitize=thread -g3
+CFLAGS = -Wall -Werror -Wextra #-g -fsanitize=thread -g3
 
 SRC_DIR = ./src
 
-SRCS = main.c arg.c init.c
+SRCS = main.c arg.c init.c threads.c actions.c monitor.c utils.c
 
 OBJS = $(addprefix $(SRC_DIR)/, ${SRCS:.c=.o})
 

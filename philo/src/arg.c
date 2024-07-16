@@ -1,32 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils2.c                                           :+:      :+:    :+:   */
+/*   arg.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pcervill <pcervill@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/23 10:32:39 by pcervill          #+#    #+#             */
-/*   Updated: 2024/07/16 14:48:58 by pcervill         ###   ########.fr       */
+/*   Created: 2024/07/16 10:57:48 by pcervill          #+#    #+#             */
+/*   Updated: 2024/07/16 17:46:31 by pcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-size_t	get_current_time(void)
+int	all_num(char *argv[])
 {
-	struct timeval	time;
+	int	i;
+	int	j;
 
-	if (gettimeofday(&time, NULL) == -1)
-		write(2, "gettimeofday() error\n", 22);
-	return (time.tv_sec * 1000 + time.tv_usec / 1000);
+	i = 1;
+	while (argv[i])
+	{
+		j = 0;
+		while (argv[i][j])
+		{
+			if (argv[i][j] < '0' || argv[i][j] > '9')
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
 }
 
-int	ft_usleep(size_t time)
+int	check_arg(int argc, char *argv[])
 {
-	size_t	start;
-
-	start = get_current_time();
-	while ((get_current_time() - start) < time)
-		usleep(time / 10);
+	if (argc < 4 || argc > 5)
+		return (error(ERR_IN_3, NULL, NULL));
+	if (all_num(argv))
+		return (error(ERR_IN_1, NULL, NULL));
 	return (0);
 }
