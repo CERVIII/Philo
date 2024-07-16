@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pcervill <pcervill@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 12:44:56 by pcervill          #+#    #+#             */
-/*   Updated: 2023/10/23 13:07:45 by pcervill         ###   ########.fr       */
+/*   Updated: 2024/07/16 14:28:14 by pcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,20 @@
 {
 	system("leaks -q philo");
 } */ //atexit(leaks);
+
+int	main(int argc, char *argv[])
+{
+	t_data	data;
+	t_philo philos[MAX_PHILO];
+	pthread_mutex_t forks[MAX_PHILO];
+
+	if (check_arg((argc - 1), argv))
+		return (1);
+	init_data(&data, philos);
+	init_forks(forks, ft_atoi(argv[1]));
+	init_philos(philos, &data, forks, argv);
+	return (0);
+}
 
 /* int	one_philo(t_data *data)
 {
@@ -29,7 +43,7 @@
 	return (0);
 } */
 
-int	main(int argc, char *argv[])
+/* int	main(int argc, char *argv[])
 {
 	t_data	data;
 
@@ -41,4 +55,4 @@ int	main(int argc, char *argv[])
 		return (one_philo(&data));
 	ft_exit(&data);
 	return (0);
-}
+} */
