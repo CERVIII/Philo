@@ -6,7 +6,7 @@
 /*   By: pcervill <pcervill@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 19:38:05 by pcervill          #+#    #+#             */
-/*   Updated: 2024/07/16 22:25:03 by pcervill         ###   ########.fr       */
+/*   Updated: 2024/08/07 23:03:36 by pcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	*philo_routine(void *pointer)
 
 	philo = (t_philo *)pointer;
 	if (philo->id % 2 == 0)
-		ft_usleep(1);
+		ft_usleep(200);
 	while (!dead_loop(philo))
 	{
 		ft_eat(philo);

@@ -6,7 +6,7 @@
 /*   By: pcervill <pcervill@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 12:22:43 by pcervill          #+#    #+#             */
-/*   Updated: 2024/07/16 19:42:20 by pcervill         ###   ########.fr       */
+/*   Updated: 2024/08/07 19:05:52 by pcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ size_t	get_current_time(void)
 
 	if (gettimeofday(&time, NULL) == -1)
 		write(2, "gettimeofday() error\n", 22);
-	return (time.tv_sec * 1000 + time.tv_usec / 1000);
+	return (time.tv_sec * 1000 + (time.tv_usec / 1000));
 }
 
 int	ft_usleep(size_t time)

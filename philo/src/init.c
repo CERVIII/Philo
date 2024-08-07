@@ -6,7 +6,7 @@
 /*   By: pcervill <pcervill@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:37:49 by pcervill          #+#    #+#             */
-/*   Updated: 2024/07/16 17:26:56 by pcervill         ###   ########.fr       */
+/*   Updated: 2024/08/07 22:53:40 by pcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	init_philos(t_philo *philos, t_data *data, pthread_mutex_t *forks,
 		if (i == 0)
 			philos[i].r_fork = &forks[philos[i].num_of_philos - 1];
 		else
-			philos[1].r_fork = &forks[i - 1];
+			philos[i].r_fork = &forks[i - 1];
 		i++;
 	}
 	return ;

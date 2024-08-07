@@ -6,7 +6,7 @@
 /*   By: pcervill <pcervill@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 21:06:56 by pcervill          #+#    #+#             */
-/*   Updated: 2024/07/16 22:27:43 by pcervill         ###   ########.fr       */
+/*   Updated: 2024/08/07 22:56:38 by pcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	check_if_dead(t_philo *philos)
 	return (0);
 }
 
-int	check_if_all_ate(t_philo *philos)
+int	check_if_all_eat(t_philo *philos)
 {
 	int	i;
 	int	finish_eat;
@@ -76,7 +76,7 @@ void	*monitor(void *pointer)
 	philos = (t_philo *)pointer;
 	while (1)
 	{
-		if (check_if_dead(philos) == 1)
+		if (check_if_all_eat(philos) == 1 || check_if_dead(philos) == 1)
 			break ;
 	}
 	return (pointer);
