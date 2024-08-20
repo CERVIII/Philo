@@ -6,7 +6,7 @@
 /*   By: pcervill <pcervill@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 21:06:56 by pcervill          #+#    #+#             */
-/*   Updated: 2024/08/07 22:56:38 by pcervill         ###   ########.fr       */
+/*   Updated: 2024/08/20 10:48:53 by pcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	*monitor(void *pointer)
 	philos = (t_philo *)pointer;
 	while (1)
 	{
-		if (check_if_all_eat(philos) == 1 || check_if_dead(philos) == 1)
+		if (check_if_dead(philos) == 1 || check_if_all_eat(philos) == 1)
 			break ;
 	}
 	return (pointer);

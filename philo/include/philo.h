@@ -6,7 +6,7 @@
 /*   By: pcervill <pcervill@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 12:37:09 by pcervill          #+#    #+#             */
-/*   Updated: 2024/08/07 22:53:37 by pcervill         ###   ########.fr       */
+/*   Updated: 2024/08/20 11:28:24 by pcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,11 +108,10 @@ void	ft_eat(t_philo *philo);
 /* MONITOR:C */
 int		philo_dead(t_philo *philo, size_t time_to_die);
 int		check_if_dead(t_philo *philos);
-int		check_if_all_ate(t_philo *philos);
+int		check_if_all_eat(t_philo *philos);
 void	*monitor(void *pointer);
 
 /* 		UTILS.C		 */
-void	destroy_all(t_data *data, pthread_mutex_t *forks);
 int		error(char *error, t_data *data, pthread_mutex_t *forks);
 size_t	get_current_time(void);
 int		ft_usleep(size_t time);

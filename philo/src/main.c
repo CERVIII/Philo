@@ -6,7 +6,7 @@
 /*   By: pcervill <pcervill@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 12:44:56 by pcervill          #+#    #+#             */
-/*   Updated: 2024/08/07 12:29:46 by pcervill         ###   ########.fr       */
+/*   Updated: 2024/08/20 11:03:16 by pcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 {
 	system("leaks -q philo");
 } */
+//	atexit(leaks);
 
 int	main(int argc, char *argv[])
 {
@@ -23,7 +24,6 @@ int	main(int argc, char *argv[])
 	t_philo			philos[MAX_PHILO];
 	pthread_mutex_t	forks[MAX_PHILO];
 
-//	atexit(leaks);
 	if (check_arg((argc - 1), argv))
 		return (1);
 	init_data(&data, philos);
